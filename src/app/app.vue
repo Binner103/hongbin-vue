@@ -1,6 +1,6 @@
 <template>
   <h3>{{ name }}</h3>
-  <input type="text" @change="onChangeContent" />
+  <input type="text" @keyup="onKeyupInput">
 </template>
 
 <script>
@@ -12,10 +12,10 @@ export default {
   },
 
   methods: {
-    onChangeContent(event) {
-      console.log(event.target.value);
-    },
-  },
+    onKeyupInput(event) {
+      console.log(event);
+    }
+  }
 };
 </script>
 
