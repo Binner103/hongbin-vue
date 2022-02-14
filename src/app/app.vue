@@ -1,9 +1,6 @@
 <template>
   <h3>{{ name }}</h3>
-  <AppButton text="确定"></AppButton>
-  <AppButton />
-  <app-button></app-button>
-  <app-button />
+  <AppButton text="确定" @tap="onTapAppButton" @init="onInitAppButton"></AppButton>
 </template>
 
 <script>
@@ -14,6 +11,16 @@ export default {
     return {
       name: 'HONGBIN',
     };
+  },
+
+  methods: {
+    onTapAppButton(text) {
+      console.log('on tap app button', text);
+    },
+
+    onInitAppButton() {
+      console.log('on init app button')
+    }
   },
 
   components: { AppButton }

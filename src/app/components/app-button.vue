@@ -1,5 +1,5 @@
 <template>
-  <button class="button">{{text}}</button>
+  <button class="button" @click="$emit('tap', text)">{{text}}</button>
 </template>
 
 <script>
@@ -10,6 +10,10 @@ export default {
       default: '按钮',
     },
   },
+
+  created() {
+      this.$emit('init');
+  }
 };
 </script>
 
