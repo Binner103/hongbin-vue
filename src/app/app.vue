@@ -1,5 +1,7 @@
 <template>
   <h3>{{ name }}</h3>
+  <router-link to="/"><strong>首页</strong></router-link>
+  <router-link to="/about">关于</router-link>
   <router-view></router-view>
 </template>
 
