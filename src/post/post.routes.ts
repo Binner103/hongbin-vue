@@ -14,6 +14,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/posts/:postId',
     component: PostShow,
+    props:true,
     children: [
       {
         path: 'meta',
