@@ -3,7 +3,7 @@
     {{ name }}
     <span v-if="loading">加载中......</span>
   </h3>
-  <div>{{user.currentUser}}</div>
+  <div>{{currentUser}}</div>
 </template>
 
 <script>
@@ -15,7 +15,10 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['name']),
+    ...mapGetters({
+      name: 'name',
+      currentUser: 'user/currentUser'
+    }),
     ...mapState(['loading', 'user']),
   },
 
@@ -28,7 +31,7 @@ export default {
     ...mapMutations(['setName']),
     ...mapActions({
       getName: 'getName',
-      getCurrentUser: 'getCurrentUser',
+      getCurrentUser: 'user/getCurrentUser',
     }),
     onClickName() {
       if (this.$store.state.name === '璇彬网') {
