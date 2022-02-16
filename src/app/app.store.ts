@@ -1,5 +1,6 @@
-import { createStore } from 'vuex';
+import { createStore, createLogger} from 'vuex';
 import user, { UserState } from '@/user/user.store';
+import { logger } from './app.plugins';
 
 export interface RootState {
   name: string;
@@ -48,6 +49,8 @@ const store = createStore({
   modules: {
     user,
   },
+
+  plugins: [createLogger(), logger]
 });
 
 export default store;
