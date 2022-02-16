@@ -23,7 +23,8 @@ const store = createStore({
   actions: {
     getName(context) {
       const name = '璇彬网';
-      context.commit('setName', name)
+      context.commit('setName', name);
+      console.log(context);
     }
   }
 });
