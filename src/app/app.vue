@@ -2,8 +2,8 @@
   <h3>{{ name }}</h3>
   <router-link to="/"><strong>首页</strong></router-link>
   <router-link to="/about">关于</router-link>
+  <router-link to="/posts">内容</router-link>
   <router-view></router-view>
-  <router-link to="/posts"></router-link>
 </template>
 
 <script>

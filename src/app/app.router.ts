@@ -30,4 +30,19 @@ const router = createRouter({
   routes,
 })
 
+/**
+ * 导航守卫
+ */
+router.beforeEach((to, from ,next) => {
+  console.log('👮‍');
+  console.log('to: ', to);
+  console.log('from: ', from);
+  
+  if (to.path === '/posts') {
+    next('/');
+  } else {
+    next();
+  }
+})
+
 export default router;
