@@ -13,6 +13,10 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/about',
     component: About
+  },
+  {
+    path: '/about-us',
+    redirect: '/about'
   }
 ];
 
