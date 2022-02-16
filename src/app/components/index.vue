@@ -1,3 +1,13 @@
 <template>
-  <h1>hongbin.net</h1>
+  <h1 @click="onClickText">hongbin.net</h1>
 </template>
+
+<script>
+export default {
+  methods: {
+    onClickText() {
+      this.$router.push('/about');
+    }
+  },
+}
+</script>
