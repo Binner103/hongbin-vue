@@ -4,14 +4,12 @@
 
 <script>
 export default {
-  data() {
-    return {
-      name: 'HONGBIN',
-    };
-  },
+  setup() {
+    const name = 'HONGBIN'
 
-  created() {
-    console.log(this.$data);
+    return {
+      name,
+    }
   }
 };
 </script>
