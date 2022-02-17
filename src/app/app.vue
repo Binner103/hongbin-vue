@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import {reactive, ref, toRefs} from 'vue';
+import {reactive, ref, toRefs, onMounted} from 'vue';
 
 export default {
   setup() {
@@ -13,9 +13,13 @@ export default {
       name.value = '宏彬'
     }
 
+    onMounted(() => {
+      console.log('mounted')
+    })
+
     return {
       name,
-      changeName
+      changeName,
     }
   }
 };
