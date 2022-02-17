@@ -6,7 +6,9 @@
         <div class="card-subtitle">Transition & Animation</div>
       </div>
       <div class="card_content">
-        <div :class="['emoji', {pulse: isActive}]">😍</div>
+        <transition>
+        <div v-if="isActive" class="emoji">😍</div>
+        </transition>
       </div>
       <div class="card_action">
         <button @click="isActive = !isActive" :class="{active: isActive}">请按这里</button>
@@ -21,7 +23,7 @@ export default {
   data() {
     return {
       name: 'HONGBIN',
-      isActive: false
+      isActive: true
     };
   },
 };
