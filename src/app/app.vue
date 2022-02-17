@@ -1,6 +1,5 @@
 <template>
-  <h3 @click="name = 'YUXUAN'">{{ name }}</h3>
-  <h4 @click="username = '玉旋'">{{username}}</h4>
+  <h3 @click="changeName">{{ name }}</h3>
 </template>
 
 <script>
@@ -10,19 +9,13 @@ export default {
   setup() {
     const name = ref('HONGBIN')
 
-    const user = reactive({
-      username: '宏彬'
-    });
-
-    // const {username} = toRefs(user) ;
-
-    console.log(user);
-
-    console.log(name.value);
+    const changeName = () => {
+      name.value = '宏彬'
+    }
 
     return {
       name,
-      ...toRefs(user),
+      changeName
     }
   }
 };
