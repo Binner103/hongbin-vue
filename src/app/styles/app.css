@@ -1,12 +1,8 @@
-input[type='text'],
-textarea,
-select {
-    padding: 4px 8px;
-    margin: 8px 0;
-    margin-right: 8px;
-    font-size: 16px;
+.page {
+  padding: 32px;
+  margin: 32px;
 }
 
-label {
-    margin-left: 4px;
+.emoji {
+  font-size: 80px;
 }
