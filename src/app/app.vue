@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import {reactive, ref, toRefs, onMounted} from 'vue';
+import {reactive, ref, toRefs, onMounted, watch} from 'vue';
 
 export default {
   setup() {
@@ -15,6 +15,10 @@ export default {
 
     onMounted(() => {
       console.log('mounted')
+    })
+
+    watch(name, (newName, oldName) => {
+      console.log(newName, oldName);
     })
 
     return {
