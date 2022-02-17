@@ -1,9 +1,9 @@
 <template>
-  <h3 @click="changeName">{{ name }}</h3>
+  <h3 @click="changeName">{{ nameEmoji }}</h3>
 </template>
 
 <script>
-import {reactive, ref, toRefs, onMounted, watch} from 'vue';
+import {reactive, ref, toRefs, onMounted, watch, computed} from 'vue';
 
 export default {
   setup() {
@@ -21,9 +21,12 @@ export default {
       console.log(newName, oldName);
     })
 
+    const nameEmoji = computed(() => `${name.value} 🤣`)
+
     return {
       name,
       changeName,
+      nameEmoji
     }
   }
 };
