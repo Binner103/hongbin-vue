@@ -1,18 +1,20 @@
 <template>
   <h3 @click="name = 'YUXUAN'">{{ name }}</h3>
-  <h4 @click="user.name = '玉旋'">{{user.name}}</h4>
+  <h4 @click="username = '玉旋'">{{username}}</h4>
 </template>
 
 <script>
-import {reactive, ref} from 'vue';
+import {reactive, ref, toRefs} from 'vue';
 
 export default {
   setup() {
     const name = ref('HONGBIN')
 
     const user = reactive({
-      name: '宏彬'
+      username: '宏彬'
     });
+
+    // const {username} = toRefs(user) ;
 
     console.log(user);
 
@@ -20,7 +22,7 @@ export default {
 
     return {
       name,
-      user
+      ...toRefs(user),
     }
   }
 };
