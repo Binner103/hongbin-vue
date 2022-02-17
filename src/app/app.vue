@@ -6,15 +6,23 @@
         <div class="card-subtitle">Transition & Animation</div>
       </div>
       <div class="card_content">
-        <transition name="pulse">
-        <div v-if="isActive" class="emoji">😍</div>
+        <transition
+          name="custom-classes"
+          enter-active-class="animate__animated animate__tada"
+          leave-active-class="animate__animated animate__bounce"
+        >
+          <div v-if="isActive" class="emoji">😍</div>
         </transition>
       </div>
       <div class="card_action">
-        <button @click="isActive = !isActive" :class="{active: isActive}">请按这里</button>
+        <button @click="isActive = !isActive" :class="{ active: isActive }">
+          请按这里
+        </button>
       </div>
     </div>
-    <div class="status"><small>isActive: {{isActive}}</small></div>
+    <div class="status">
+      <small>isActive: {{ isActive }}</small>
+    </div>
   </div>
 </template>
 
@@ -23,7 +31,7 @@ export default {
   data() {
     return {
       name: 'HONGBIN',
-      isActive: true
+      isActive: true,
     };
   },
 };
@@ -32,4 +40,5 @@ export default {
 <style>
 @import './styles/app.css';
 @import './styles/card.css';
+@import './styles/animate.css';
 </style>
