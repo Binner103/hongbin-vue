@@ -86,3 +86,7 @@
 .pulse-leave-active {
   animation: pulse 1s;
 }
+
+.v-move {
+  transition: 0.5s;
+}
