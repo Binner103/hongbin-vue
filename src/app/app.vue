@@ -6,7 +6,7 @@
         <div class="card-subtitle">Transition & Animation</div>
       </div>
       <div class="card_content">
-        <transition name="slide">
+        <transition name="pulse">
         <div v-if="isActive" class="emoji">😍</div>
         </transition>
       </div>
