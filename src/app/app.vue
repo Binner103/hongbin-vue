@@ -1,9 +1,19 @@
 <template>
   <h3>{{ name }}</h3>
 
-  <UserLogin />
+  <UserLogin
+    v-if="!isLoggedIn"
+    @login-success="onLoginSuccess"
+    @login-error="onLoginError"
+  />
 
-  <input type="text" v-model="title" @keyup.enter="createPost" />
+  <input
+    v-if="isLoggedIn"
+    type="text"
+    v-model="title"
+    @keyup.enter="createPost"
+    placeholder="请输入内容标题"
+  />
   <div>{{ errorMessage }}</div>
   <div v-for="post in posts" :key="post.id">
     <input
@@ -19,7 +29,7 @@
 
 <script>
 import { apiHttpClient } from '@/app/app.service';
-import UserLogin from '@/user/components/user-login.vue'
+import UserLogin from '@/user/components/user-login.vue';
 
 export default {
   data() {
@@ -32,18 +42,32 @@ export default {
     };
   },
 
+  computed: {
+    isLoggedIn() {
+      return this.token ? true : false;
+    },
+  },
+
   async created() {
     this.getPosts();
   },
 
   methods: {
+    onLoginSuccess(data) {
+      this.token = data.token;
+    },
+
+    onLoginError(error) {
+      this.errorMessage = error.data.message;
+    },
+
     async deletePost(postId) {
       try {
         await apiHttpClient.delete(`/posts/${postId}`, {
           headers: {
-            Authorization: `Bearer ${this.token}`
-          }
-        })
+            Authorization: `Bearer ${this.token}`,
+          },
+        });
 
         this.getPosts();
       } catch (error) {
@@ -109,8 +133,8 @@ export default {
   },
 
   components: {
-    UserLogin
-  }
+    UserLogin,
+  },
 };
 </script>
 
