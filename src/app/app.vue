@@ -27,6 +27,10 @@
     accept="image/png, image/jpg, image/jpeg"
   />
 
+  <div v-if="imageUploadProgress">
+    <span class="image-upload-progress">{{ imageUploadProgress + '%' }}</span>
+  </div>
+
   <div v-if="imagePreviewUrl">
     <img class="image-preview" :src="imagePreviewUrl" />
   </div>
@@ -59,6 +63,7 @@ export default {
       currentUser: null,
       file: null,
       imagePreviewUrl: null,
+      imageUploadProgress: null,
     };
   },
 
@@ -100,14 +105,23 @@ export default {
             headers: {
               Authorization: `Bearer ${this.token}`,
             },
+
+            onUploadProgress: (event) => {
+              console.log(event);
+
+              const { loaded, total } = event;
+
+              this.imageUploadProgress = Math.round((loaded * 100) / total);
+            },
           },
         );
 
         this.file = null;
         this.imagePreviewUrl = null;
         this.$refs.file.value = '';
+        this.imageUploadProgress = null;
 
-        console.log(response.data)
+        console.log(response.data);
       } catch (error) {
         this.errorMessage = error.data.message;
       }
@@ -229,7 +243,7 @@ export default {
         console.log(response.data);
 
         if (this.file) {
-          this.createFile(this.file, response.data.insertId)
+          this.createFile(this.file, response.data.insertId);
         }
 
         this.title = '';
