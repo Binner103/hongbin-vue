@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { apiHttpClient} from '@/app/app.service';
+import { apiHttpClient } from '@/app/app.service';
 
 export default {
   data() {
@@ -16,14 +16,28 @@ export default {
       name: 'HONGBIN',
       posts: [],
       errorMessage: '',
+      user: {
+        name: '李白',
+        password: '123123',
+      },
+      token: '',
     };
   },
 
   async created() {
     try {
-      const response = await apiHttpClient.get('/posts')
+      const response = await apiHttpClient.get('/posts');
 
       this.posts = response.data;
+    } catch (error) {
+      this.errorMessage = error.message;
+    }
+
+    //用户登录
+    try {
+      const response = await apiHttpClient.post('/login', this.user);
+      this.token = response.data.token;
+      console.log(response.data);
     } catch (error) {
       this.errorMessage = error.message;
     }
