@@ -1,9 +1,9 @@
 <template>
   <h3>{{ name }}</h3>
-  <div>{{errorMessage}}</div>
+  <div>{{ errorMessage }}</div>
   <div v-for="post in posts" :key="post.id">
-    {{post.title}} - 
-    <small>{{post.user.name}}</small>
+    {{ post.title }} -
+    <small>{{ post.user.name }}</small>
   </div>
 </template>
 
@@ -19,16 +19,13 @@ export default {
     };
   },
 
-  created() {
-    axios.get('http://localhost:3000/posts1').then(response => {
-      console.log(response);
+  async created() {
+    try {
+      const response = await axios.get('http://localhost:3000/posts')
       this.posts = response.data
-    }).catch(error => {
-      console.log(error.message)
-      console.log(error.response)
-
+    } catch (error) {
       this.errorMessage = error.message
-    });
+    }
   },
 };
 </script>
