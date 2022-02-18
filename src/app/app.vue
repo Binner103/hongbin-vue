@@ -1,5 +1,6 @@
 <template>
   <h3>{{ name }}</h3>
+  <input type="text" v-model="title" @keyup.enter="createPost" />
   <div>{{ errorMessage }}</div>
   <div v-for="post in posts" :key="post.id">
     {{ post.title }} -
@@ -21,17 +22,12 @@ export default {
         password: '123123',
       },
       token: '',
+      title: '',
     };
   },
 
   async created() {
-    try {
-      const response = await apiHttpClient.get('/posts');
-
-      this.posts = response.data;
-    } catch (error) {
-      this.errorMessage = error.message;
-    }
+    this.getPosts();
 
     //用户登录
     try {
@@ -41,6 +37,41 @@ export default {
     } catch (error) {
       this.errorMessage = error.message;
     }
+  },
+
+  methods: {
+    async getPosts() {
+      try {
+        const response = await apiHttpClient.get('/posts');
+
+        this.posts = response.data;
+      } catch (error) {
+        this.errorMessage = error.message;
+      }
+    },
+
+    async createPost() {
+      try {
+        const response = await apiHttpClient.post(
+          '/posts',
+          {
+            title: this.title,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${this.token}`,
+            },
+          },
+        );
+
+        console.log(response.data);
+
+        this.title = '';
+        this.getPosts();
+      } catch (error) {
+        this.errorMessage = error.message;
+      }
+    },
   },
 };
 </script>
