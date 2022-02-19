@@ -2,32 +2,37 @@ input[type='text'],
 input[type='password'],
 textarea,
 select {
-    padding: 4px 8px;
-    margin: 8px 0;
-    margin-right: 8px;
-    font-size: 16px;
+  padding: 4px 8px;
+  margin: 8px 0;
+  margin-right: 8px;
+  font-size: 16px;
 }
 
 label {
-    margin-left: 4px;
+  margin-left: 4px;
 }
 
 .image-preview {
-    max-width: 360px;
+  max-width: 360px;
 }
 
-.image-upload-progress{
-    font-size: 32px;
-    font-weight: 300;
+.image-upload-progress {
+  font-size: 32px;
+  font-weight: 300;
 }
 
-.drag-zone{
-    width: 360px;
-    height: 250px;
-    background: #f8f8f8;
-    color: #ababab;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.drag-zone {
+  width: 360px;
+  height: 250px;
+  background: #f8f8f8;
+  color: #ababab;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.drag-zone.active {
+  background: #83c7f7;
+  color: #1790e9;
 }
