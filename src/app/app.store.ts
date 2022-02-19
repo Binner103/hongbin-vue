@@ -1,3 +1,4 @@
+import { postStoreModule } from '@/post/post.store';
 import { createStore } from 'vuex';
 
 /**
@@ -6,6 +7,10 @@ import { createStore } from 'vuex';
 const store = createStore({
   state: {
     appName: 'HONGBIN'
+  },
+
+  modules: {
+    post: postStoreModule
   }
 });
 

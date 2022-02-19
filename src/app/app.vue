@@ -10,6 +10,10 @@ export default {
       name: 'HONGBIN',
     };
   },
+
+  created() {
+    console.log(this.$store.state)
+  }
 };
 </script>
 
