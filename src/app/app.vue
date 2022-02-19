@@ -1,6 +1,8 @@
 <template>
-  <h3>{{ name }}</h3>
-  
+  <h3>
+    <router-link to="'/">{{ name }}</router-link>
+  </h3>
+  <router-view></router-view>
 </template>
 
 <script>
@@ -12,8 +14,8 @@ export default {
   },
 
   created() {
-    console.log(this.$store.state)
-  }
+    console.log(this.$store.state);
+  },
 };
 </script>
 
