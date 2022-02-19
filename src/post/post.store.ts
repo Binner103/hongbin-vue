@@ -21,6 +21,7 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
 
   modules: {
     create: postCreateStoreModule,
-    index: postIndexStoreModule
+    index: postIndexStoreModule,
+    show: postIndexStoreModule,
   },
 };

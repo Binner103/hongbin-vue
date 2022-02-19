@@ -1,28 +1,33 @@
 import { apiHttpClient } from '@/app/app.service';
 import { RootState } from '@/app/app.store';
 import { Module } from 'vuex';
-import { PostItem } from '../post.store';
 
-export interface PostIndexStoreState {
-  loading: boolean;
-  posts: Array<PostItem>;
+export interface Post {
+  id: number;
+  title: string;
+  content: string;
 }
 
-export const postIndexStoreModule: Module<PostIndexStoreState, RootState> = {
+export interface PostShowStoreState {
+  loading: boolean;
+  post: Post;
+}
+
+export const postShowStoreModule: Module<PostShowStoreState, RootState> = {
   namespaced: true,
 
   state: {
     loading: false,
-    posts: [],
-  } as PostIndexStoreState,
+    post: {},
+  } as PostShowStoreState,
 
   getters: {
     loading(state) {
       return state.loading;
     },
 
-    posts(state) {
-      return state.posts;
+    post(state) {
+      return Object.keys(state.post).length ? state.post : null;
     },
   },
 
@@ -31,23 +36,24 @@ export const postIndexStoreModule: Module<PostIndexStoreState, RootState> = {
       state.loading = data;
     },
 
-    setPosts(state, data) {
-      state.posts = data;
+    setPost(state, data) {
+      state.post = data;
     },
   },
 
   actions: {
-    async getPosts({ commit }) {
+    async getPostById({ commit }, postId) {
       commit('setLoading', true);
 
       try {
-        const response = await apiHttpClient.get('/posts');
-        commit('setPosts', response.data);
+        const response = await apiHttpClient.get(`/posts/${postId}`);
         commit('setLoading', false);
+        commit('setPost', response.data);
 
         return response;
       } catch (error: any) {
         commit('setLoading', false);
+
         throw error.response;
       }
     },
