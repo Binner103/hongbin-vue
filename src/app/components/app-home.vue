@@ -1,3 +1,3 @@
 <template>
-  <div>Home</div>
+  <div>欢迎访问璇彬网 : )</div>
 </template>

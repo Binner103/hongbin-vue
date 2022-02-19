@@ -1,6 +1,6 @@
 <template>
   <h3>
-    <router-link to="'/">{{ name }}</router-link>
+    <router-link to="/">{{ name }}</router-link>
   </h3>
   <router-view></router-view>
 </template>

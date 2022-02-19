@@ -5,6 +5,7 @@ import {
   PostCreateStoreState,
 } from './create/post-create.store';
 import { postIndexStoreModule } from './index/post-index.store';
+import {postShowStoreModule} from './show/post-show.store'
 
 export interface PostStoreState {
   create: PostCreateStoreState;
@@ -22,6 +23,6 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
   modules: {
     create: postCreateStoreModule,
     index: postIndexStoreModule,
-    show: postIndexStoreModule,
+    show: postShowStoreModule,
   },
 };
